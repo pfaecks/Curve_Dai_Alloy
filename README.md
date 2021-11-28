@@ -4,12 +4,12 @@ This mix is configured for use with [Ganache](https://github.com/trufflesuite/ga
 
 ## How it Works
 ### Deposit
-In this Strategy we take DAI as collateral. We deposit the Dai into the Curve sUSD Stablecoin pool and get Curve LP tokens, representing out supplied liquidity in return. The LP tokens are deposited into the Curve Rewards Gauge contract. We plan on changing 
+In this Strategy we take DAI as collateral. We deposit the Dai into the Curve sUSD Stablecoin pool and get Curve LP tokens, representing out supplied liquidity in return. The LP tokens are deposited into the Curve Rewards Gauge contract. We plan on changing this to staking the Curve LP tokens in convex, which adds some complexity since accrued rewards have to be sold for dai, put into curve and then staked on convex.
 ### Harvest & Compounding
 The reInvest() function compounds the accrued rewards. It first claims the rewards from the Curve Rewards Gauge Contract. Then it converts the CRV & SNX rewards to DAI through the Uniswap V3 Router & reinvests the DAI back into the strategy.
 
 ### Withdrawing Funds
-When calling the with functtioon, the strategy first unstakes the LP tokens from the Rewards Gauge, and then exchanges the LP tokens for DAI from the Curve sUSD Pool. 
+When calling the with function, the strategy first unstakes the LP tokens from the Rewards Gauge, and then exchanges the LP tokens for DAI from the Curve sUSD Pool. 
 
 ## [Expected Yield]
 
